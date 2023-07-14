@@ -90,5 +90,5 @@ Route::get('delete/{id}', [App\Http\Controllers\FormController::class, 'viewDele
 
 Route::get('/view/addons', [AddonsController::class, 'viewRecord'])->middleware('auth')->name('view/addons');
 Route::post('/addon/save', [AddonsController::class, 'saveRecord'])->name('addon/save');
-Route::post('update/{id}', [AddonsController::class, 'update'])->name('update');
+Route::post('updateaddon/{id}', [AddonsController::class, 'updateaddon'])->name('updateaddon');
 Route::get('/extract-zip', [AddonsController::class, 'extractZip'])->name('extractZip');;

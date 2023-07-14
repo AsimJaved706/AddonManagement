@@ -25,7 +25,7 @@ class AddonsController extends Controller
         return view('view_record.viewrecord',compact('data'));
     }
 
-    public function Update(Request $request,$id)
+    public function updateaddon(Request $request,$id)
     {
         try{
             $status       = $request->status;

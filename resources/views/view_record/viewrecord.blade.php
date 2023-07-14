@@ -87,7 +87,7 @@
                           <h5 class="modal-title" id="updateModalLabel"></h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form class="row g-3" action="{{ route('update',$item->id)}}" method="post">
+                        <form class="row g-3" action="{{ route('updateaddon',$item->id)}}" method="post">
 
                         <div class="modal-body">
                             @csrf
