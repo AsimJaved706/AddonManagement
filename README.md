@@ -24,13 +24,11 @@ Register the Laravel Modules Service Provider (Nwidart\Modules\LaravelModulesSer
 
 php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
 
-![Screenshot_4](https://github.com/AsimJaved706/AddonManagement/assets/95396483/97402486-1f56-4a16-9ea0-346070b1a0d6)
-![1](https://github.com/AsimJaved706/AddonManagement/assets/95396483/076024d8-a949-4a44-8a8b-a710e338ac4c)
-![2](https://github.com/AsimJaved706/AddonManagement/assets/95396483/b402e72f-e715-4f1e-ae70-23af39ddf623)
-![3](https://github.com/AsimJaved706/AddonManagement/assets/95396483/7990b0d9-5c13-4708-9540-91c512a1a02f)
-![4](https://github.com/AsimJaved706/AddonManagement/assets/95396483/873db3fc-8ac9-42fc-8b99-2264eeec68a3)
-![5](https://github.com/AsimJaved706/AddonManagement/assets/95396483/0a52a534-4bc7-4abd-9f68-a0c7160d823f)
-![Screenshot_4](https://github.com/AsimJaved706/AddonManagement/assets/95396483/2decb791-faa1-40ed-9a57-a5dafdade60f)
-![Screenshot_5](https://github.com/AsimJaved706/AddonManagement/assets/95396483/0ea92278-9c45-4794-a69c-bff027b0832a)
-![Screenshot_2](https://github.com/AsimJaved706/AddonManagement/assets/95396483/c9ab07e2-ddeb-414f-ab7a-1df6ae32d3a7)
+![t1](https://github.com/AsimJaved706/AddonManagement/assets/95396483/abf578fe-528c-438a-a6c5-fb37297e0909)
+![t2](https://github.com/AsimJaved706/AddonManagement/assets/95396483/f09e158f-f00b-4337-8498-592f5b904651)
+![t3](https://github.com/AsimJaved706/AddonManagement/assets/95396483/5e948973-606a-4cb9-950a-bab86ce38b3a)
+![t4](https://github.com/AsimJaved706/AddonManagement/assets/95396483/934f6386-8331-457b-a254-7d3a0fa15c88)
+![t6](https://github.com/AsimJaved706/AddonManagement/assets/95396483/acc80dbc-6525-4e86-ab92-dcc2ef464ee8)
+![Screenshot_2](https://github.com/AsimJaved706/AddonManagement/assets/95396483/ad953760-5c78-42d4-aceb-42f764f46dfe)
+
 
