@@ -21,5 +21,13 @@ class AdminUserSeeder extends Seeder
             'avatar' => 'photo_defaults.jpg',
             'password' => bcrypt('123456'),
         ]);
+        User::create([
+            'name' => 'user',
+            'status' => '',
+            'role_name' => 'Normal User',
+            'email' => 'user@user.com',
+            'avatar' => 'photo_defaults.jpg',
+            'password' => bcrypt('password123'),
+        ]);
     }
 }

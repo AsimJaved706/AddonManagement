@@ -78,18 +78,17 @@
                   {{ $item->status }}
                 </td>
                 <td>
-                @if(auth()->user()->role_name != 'Normal User')
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">Updaate</button>
-                  <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                  @if(auth()->user()->role_name != 'Normal User')
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal{{$item->id}}">Update</button>
+                  <div class="modal fade" id="updateModal{{$item->id}}" tabindex="-1" aria-labelledby="updateModalLabel{{$item->id}}" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="updateModalLabel"></h5>
+                          <h5 class="modal-title" id="updateModalLabel{{$item->id}}"></h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form class="row g-3" action="{{ route('updateaddon',$item->id)}}" method="post">
-
-                        <div class="modal-body">
+                        <form class="row g-3" action="{{ route('updateaddon', $item->id) }}" method="post">
+                          <div class="modal-body">
                             @csrf
                             <div class="col-md-4">
                               <label class="card-title L1">Status</label>
@@ -102,23 +101,22 @@
                             <br>
                             <div class="col-md-4">
                               <label class="card-title L1">Comments</label>
-                              <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+                              <textarea name="comments" id="comments{{$item->id}}" cols="30" rows="10"></textarea>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
                         </form>
-
                       </div>
                     </div>
                   </div>
                   @endif
 
-                @if((auth()->user()->role_name == 'Normal User' )&&($item->status=='Accepted'))
-                <button type="button" class="btn btn-primary" onclick="extractZip('{{ $item->file_path }}')">Install</button>
-                @endif
+                  @if((auth()->user()->role_name == 'Normal User' )&&($item->status=='Accepted'))
+                  <button type="button" class="btn btn-primary" onclick="extractZip('{{ $item->file_name }}')">Install</button>
+                  @endif
 
                 </td>
               </tr>
@@ -146,6 +144,9 @@
               @csrf
               <div class="form-body">
                 <div class="row">
+                <div class="alert alert-danger" role="alert">
+                    File Should be in with Zip extension
+                  </div>
                   <div class="col-md-4">
                     <label>Addon Name</label>
                   </div>
@@ -206,20 +207,20 @@
 
 
   function extractZip(zipFilePath) {
-  // Send an AJAX request to your Laravel route or endpoint
-  $.ajax({
-    url: '/extract-zip',
-    method: 'GET',
-    data: {
-      zipFilePath: zipFilePath
-    },
-    success: function(response) {
-      console.log(response);
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-    }
-  });
-}
+    // Send an AJAX request to your Laravel route or endpoint
+    $.ajax({
+      url: '/extract-zip',
+      method: 'GET',
+      data: {
+        zipFilePath: zipFilePath
+      },
+      success: function(response) {
+        console.log(response);
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  }
 </script>
 @endsection

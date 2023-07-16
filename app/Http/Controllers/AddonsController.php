@@ -10,6 +10,8 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use DB;
 use ZipArchive;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+
 class AddonsController extends Controller
 {
     // view form
@@ -21,7 +23,15 @@ class AddonsController extends Controller
     // Addons
     public function viewRecord()
     {
-        $data = Addons::get();
+        $user = Auth::user();
+           // Check if the user is an admin
+           if ($user && $user->role_name === 'Admin') {
+            // User is an admin, retrieve all records
+            $data = Addons::all();
+        } else {
+            // User is not an admin, retrieve only user-specific records
+            $data = Addons::where('user_id', $user->id)->get();
+        }
         return view('view_record.viewrecord',compact('data'));
     }
 
@@ -30,7 +40,6 @@ class AddonsController extends Controller
         try{
             $status       = $request->status;
             $comments       = $request->comments;
-
             $update = [
                 'status'        => $status,
                 'comments'        => $comments,
@@ -83,31 +92,24 @@ class AddonsController extends Controller
         }
     }
 
-    public function extractZip(Request $request){
-        // Path to the ZIP file
-        $encodedFilePath  = urldecode($request->input('zipFilePath'));
-        $zipFilePath = urlencode($encodedFilePath );
-        // Destination directory for extracted files
-        $extractPath = public_path('modules');
-        $filename = pathinfo(basename($request->input('zipFilePath')), PATHINFO_FILENAME);
-
-        try {
-            file_put_contents($zipFilePath, $extractPath);
-            $zip = new ZipArchive();
-            Artisan::call('module:make', ['name' => $filename]);
-            if ($zip->open($zipFilePath) == true) {
-               $zip->open($zipFilePath);
-               $zip->extractTo($extractPath);
-               $zip->close();
-
-                return response()->json(['message' => 'ZIP file extracted successfully']);
-            } else {
-                return response()->json(['error' => 'Failed to open ZIP file'], 500);
-            }
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+    public function extractZip(Request $request)
+    {
+        $zipFilePath = public_path('zip\\'.$request->input('zipFilePath'));  // Path to the ZIP file
+        $extractPath = app_path('modules\\'. str_replace('.zip', '', $request->input('zipFilePath'))); // Destination directory for extracted files
+        $zip = new ZipArchive();
+        if ($zip->open($zipFilePath) === true) {
+            $zip->extractTo($extractPath);
+            $zip->close();
+            // Return a response indicating the successful extraction
+            Toastr::success('Data updated successfully :)','Success');
+            return response()->json(['message' => 'ZIP file extracted successfully']);
+        } else {
+            Toastr::error('Failed to open ZIP file :)','Error');
+            return response()->json(['error' => 'Failed to open ZIP file'], 500);
         }
-        
-    }}
+    }
+
+
+}
 
 

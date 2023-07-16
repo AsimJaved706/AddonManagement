@@ -6,6 +6,10 @@ Admin user Credenitals
 admin@admin.com
 pass:123456
 
+Normal User
+user@user.com
+pass:password123
+
 1-User can register
 2-Admin will aprove
 3-Only approved users can upload zip files
