@@ -1,18 +1,18 @@
-1-Composer install
-2-php artisan migrate
-3-php artisan db:seed --class=AdminUserSeeder
+1-Composer install__
+2-php artisan migrate__
+3-php artisan db:seed --class=AdminUserSeeder__
 
-Admin user Credenitals 
-admin@admin.com
-pass:123456
+Admin user Credenitals __
+admin@admin.com__
+pass:123456__
 
-Normal User
-user@user.com
-pass:password123
+Normal User__
+user@user.com__
+pass:password123__
 
-1-User can register
-2-Admin will aprove
-3-Only approved users can upload zip files
+1-User can register__
+2-Admin will aprove__
+3-Only approved users can upload zip files__
 4-After uploading zip file admin will aprove or reject with comments
 5-if admin will approve then user can install
 6-Modular Package making an issue on composer but you can install by command
